@@ -11,8 +11,12 @@ module ErgastF1
       @season_data = JSON.parse(get_season)
     end
 
-    def races
-      @season_data.dig("MRData", "RaceTable", "Races")
+    def races(round=nil)
+      if round
+        @season_data.dig("MRData", "RaceTable", "Races").select{|r| r["round"] == round.to_s}.first || (raise ApiError, "Nonexistent Round Number Specified")
+      else
+        @season_data.dig("MRData", "RaceTable", "Races")
+      end
     end
 
     private

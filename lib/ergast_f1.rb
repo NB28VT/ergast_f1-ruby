@@ -1,5 +1,8 @@
 require "ergast_f1/version"
-# Do we have to?
+require "ergast_f1/exceptions"
+
+
+# Do we have to? Look at other gems
 require "ergast_f1/season"
 
 

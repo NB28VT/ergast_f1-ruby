@@ -70,5 +70,16 @@ module ExpectedVars
     "circuitName"=>"Autodromo Nazionale di Monza",
     "Location"=>{"lat"=>"45.6156", "long"=>"9.28111", "locality"=>"Monza", "country"=>"Italy"}},
   "date"=>"1950-09-03"}]
+  
+    MONZA_1950_RACE = {"season"=>"1950",
+    "round"=>"7",
+    "url"=>"http://en.wikipedia.org/wiki/1950_Italian_Grand_Prix",
+    "raceName"=>"Italian Grand Prix",
+    "Circuit"=>
+     {"circuitId"=>"monza",
+      "url"=>"http://en.wikipedia.org/wiki/Autodromo_Nazionale_Monza",
+      "circuitName"=>"Autodromo Nazionale di Monza",
+      "Location"=>{"lat"=>"45.6156", "long"=>"9.28111", "locality"=>"Monza", "country"=>"Italy"}},
+    "date"=>"1950-09-03"}
   end
 end
