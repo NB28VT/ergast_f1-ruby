@@ -5,10 +5,14 @@ require "pry"
 
 module ErgastF1
   class Season
-    def initialize(year)
-      @year = year
-      # TODO: SUPPORT NON JSON RETURNS/FAILURES
-      @season_data = JSON.parse(get_season)
+    def initialize(year=nil)
+      @year = year || Time.now.year
+      
+      begin
+        @season_data = JSON.parse(get_season)
+      rescue JSON::ParserError
+        return "Non-JSON reponse from ErgastF1 server"
+      end
     end
 
     def races(round=nil)
@@ -17,6 +21,11 @@ module ErgastF1
       else
         @season_data.dig("MRData", "RaceTable", "Races")
       end
+    end
+
+    def driver_standings
+      uri = URI("http://ergast.com/api/f1/#{@year}/driverStandings.json")
+      Net::HTTP.get(uri)
     end
 
     private
