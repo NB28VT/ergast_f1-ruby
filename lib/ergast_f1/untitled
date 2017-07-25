@@ -1,0 +1,6 @@
+require "net/http"
+require "json"
+require "awesome_print"
+
+
+JSON.parse(Net::HTTP.get(URI("http://ergast.com/api/f1/1992/constructorStandings.json")))

@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ergast.com/api/f1/1992/constructorStandings.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - ergast.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 24 Jul 2017 21:33:31 GMT
+      Server:
+      - Apache/2.2.15 (CentOS)
+      X-Powered-By:
+      - PHP/5.3.3
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Length:
+      - '3209'
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Cache:
+      - MISS from cache_server
+      X-Cache-Lookup:
+      - MISS from cache_server:3128
+      Via:
+      - 1.0 cache_server:3128 (squid/2.6.STABLE21)
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: '{"MRData":{"xmlns":"http:\/\/ergast.com\/mrd\/1.4","series":"f1","url":"http://ergast.com/api/f1/1992/constructorstandings.json","limit":"30","offset":"0","total":"15","StandingsTable":{"season":"1992","StandingsLists":[{"season":"1992","round":"16","ConstructorStandings":[{"position":"1","positionText":"1","points":"164","wins":"10","Constructor":{"constructorId":"williams","url":"http://en.wikipedia.org/wiki/Williams_Grand_Prix_Engineering","name":"Williams","nationality":"British"}},{"position":"2","positionText":"2","points":"99","wins":"5","Constructor":{"constructorId":"mclaren","url":"http://en.wikipedia.org/wiki/McLaren","name":"McLaren","nationality":"British"}},{"position":"3","positionText":"3","points":"91","wins":"1","Constructor":{"constructorId":"benetton","url":"http://en.wikipedia.org/wiki/Benetton_Formula","name":"Benetton","nationality":"Italian"}},{"position":"4","positionText":"4","points":"21","wins":"0","Constructor":{"constructorId":"ferrari","url":"http://en.wikipedia.org/wiki/Scuderia_Ferrari","name":"Ferrari","nationality":"Italian"}},{"position":"5","positionText":"5","points":"13","wins":"0","Constructor":{"constructorId":"team_lotus","url":"http://en.wikipedia.org/wiki/Team_Lotus","name":"Team
+        Lotus","nationality":"British"}},{"position":"6","positionText":"6","points":"8","wins":"0","Constructor":{"constructorId":"tyrrell","url":"http://en.wikipedia.org/wiki/Tyrrell_Racing","name":"Tyrrell","nationality":"British"}},{"position":"7","positionText":"7","points":"6","wins":"0","Constructor":{"constructorId":"footwork","url":"http://en.wikipedia.org/wiki/Footwork_Arrows","name":"Footwork","nationality":"British"}},{"position":"8","positionText":"8","points":"6","wins":"0","Constructor":{"constructorId":"ligier","url":"http://en.wikipedia.org/wiki/Ligier","name":"Ligier","nationality":"French"}},{"position":"9","positionText":"9","points":"3","wins":"0","Constructor":{"constructorId":"march","url":"http://en.wikipedia.org/wiki/March_Engineering","name":"March","nationality":"British"}},{"position":"10","positionText":"10","points":"2","wins":"0","Constructor":{"constructorId":"dallara","url":"http://en.wikipedia.org/wiki/Dallara","name":"Dallara","nationality":"Italian"}},{"position":"11","positionText":"11","points":"1","wins":"0","Constructor":{"constructorId":"jordan","url":"http://en.wikipedia.org/wiki/Jordan_Grand_Prix","name":"Jordan","nationality":"Irish"}},{"position":"12","positionText":"12","points":"1","wins":"0","Constructor":{"constructorId":"minardi","url":"http://en.wikipedia.org/wiki/Minardi","name":"Minardi","nationality":"Italian"}},{"position":"13","positionText":"13","points":"1","wins":"0","Constructor":{"constructorId":"larrousse","url":"http://en.wikipedia.org/wiki/Larrousse","name":"Larrousse","nationality":"French"}},{"position":"14","positionText":"14","points":"0","wins":"0","Constructor":{"constructorId":"fondmetal","url":"http://en.wikipedia.org/wiki/Fondmetal","name":"Fondmetal","nationality":"Italian"}},{"position":"15","positionText":"15","points":"0","wins":"0","Constructor":{"constructorId":"brabham","url":"http://en.wikipedia.org/wiki/Brabham","name":"Brabham","nationality":"British"}}]}]}}}'
+    http_version: 
+  recorded_at: Mon, 24 Jul 2017 20:41:17 GMT
+recorded_with: VCR 3.0.3

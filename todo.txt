@@ -1,0 +1,1 @@
+[ ] Converter module for normalizing nationality names (eg. "British" should be "Britain") for ease of flag use
