@@ -1,9 +1,4 @@
-require "spec_helper"
-# This is in gem file. Make availabe?
-require "pry"
-
-RSpec.describe ErgastF1::Season do
-  
+RSpec.describe ErgastF1::Season do  
   it "Handles a non-JSON response from the ErgastF1 server with a helpful message" do
     # Use webmock here
     season = ErgastF1::Season.new(1950)
@@ -29,7 +24,6 @@ RSpec.describe ErgastF1::Season do
   end
 
   describe ".races" do
-
     before(:each) do
       @season_1950 = ErgastF1::Season.new(1950)
     end
@@ -62,5 +56,4 @@ RSpec.describe ErgastF1::Season do
       end
     end    
   end
-
 end
