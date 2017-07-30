@@ -1,0 +1,33 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ergast.com/api/f1/1997//results.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Sun, 30 Jul 2017 22:05:48 GMT
+      Server:
+      - Apache/2.2.15 (CentOS)
+      X-Powered-By:
+      - PHP/5.3.3
+      Content-Length:
+      - '111'
+      Connection:
+      - close
+      Content-Type:
+      - text/html; charset=UTF-8
+    body:
+      encoding: ASCII-8BIT
+      string: "<html>\r\n  <head>\r\n    <title>Error</title>\r\n  </head>\r\n  <body>\r\n
+        \   <h3>Bad Request</h3>\r\n  </body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Sun, 30 Jul 2017 21:13:36 GMT
+recorded_with: VCR 3.0.3

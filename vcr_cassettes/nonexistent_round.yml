@@ -1,0 +1,65 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ergast.com/api/f1/1989/20/results.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 30 Jul 2017 22:16:05 GMT
+      Server:
+      - Apache/2.2.15 (CentOS)
+      X-Powered-By:
+      - PHP/5.3.3
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Length:
+      - '212'
+      Connection:
+      - close
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: ASCII-8BIT
+      string: '{"MRData":{"xmlns":"http:\/\/ergast.com\/mrd\/1.4","series":"f1","url":"http://ergast.com/api/f1/1989/20/results.json","limit":"30","offset":"0","total":"0","RaceTable":{"season":"1989","round":"20","Races":[]}}}'
+    http_version: 
+  recorded_at: Sun, 30 Jul 2017 21:23:54 GMT
+- request:
+    method: get
+    uri: http://ergast.com/api/f1/1989/20/results.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 30 Jul 2017 22:16:05 GMT
+      Server:
+      - Apache/2.2.15 (CentOS)
+      X-Powered-By:
+      - PHP/5.3.3
+      Access-Control-Allow-Origin:
+      - "*"
+      Content-Length:
+      - '212'
+      Connection:
+      - close
+      Content-Type:
+      - application/json; charset=utf-8
+    body:
+      encoding: ASCII-8BIT
+      string: '{"MRData":{"xmlns":"http:\/\/ergast.com\/mrd\/1.4","series":"f1","url":"http://ergast.com/api/f1/1989/20/results.json","limit":"30","offset":"0","total":"0","RaceTable":{"season":"1989","round":"20","Races":[]}}}'
+    http_version: 
+  recorded_at: Sun, 30 Jul 2017 21:26:01 GMT
+recorded_with: VCR 3.0.3
