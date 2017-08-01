@@ -5,6 +5,7 @@ require "ergast_f1/ergast_client"
 
 # TODO: INHERIT FROM MORE USEFUL ERROR TYPES
 class BadQuery < StandardError; end
+class ApiError < StandardError; end
 
 module ErgastF1
   # Your code goes here...

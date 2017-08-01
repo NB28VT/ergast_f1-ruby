@@ -15,13 +15,13 @@ module ErgastF1
     end
 
     def driver_standings
-      parsed_response = ErgastClient.new("#{@year}/driverStandings.json").api_get_request
+      parsed_response = ErgastClient.new("#{@year}/driverStandings").api_get_request
       # Uh oh, array for standings lists
       parsed_response.dig("MRData", "StandingsTable", "StandingsLists").first["DriverStandings"]
     end
 
     def constructor_standings
-      parsed_response = ErgastClient.new("#{@year}/constructorStandings.json").api_get_request
+      parsed_response = ErgastClient.new("#{@year}/constructorStandings").api_get_request
       # Uh oh, array for standings lists
       parsed_response.dig("MRData", "StandingsTable", "StandingsLists").first["ConstructorStandings"]
     end
@@ -29,7 +29,7 @@ module ErgastF1
     private
 
     def get_season
-      ErgastClient.new("#{@year}.json").api_get_request
+      ErgastClient.new("#{@year}").api_get_request
     end
   end
 end
