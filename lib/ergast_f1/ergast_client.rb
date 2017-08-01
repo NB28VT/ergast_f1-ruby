@@ -2,7 +2,8 @@ class ErgastClient
   BASE_URL = "http://ergast.com/api/f1/"
 
   def initialize(endpoint_path)
-    @endpoint = BASE_URL + endpoint_path
+    # TODO: SUPPORT OTHER FORMATS BESIDES JSON
+    @endpoint = BASE_URL + endpoint_path + ".json"
   end
 
   def api_get_request

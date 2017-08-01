@@ -1,3 +1,5 @@
+require "spec_helper"
+
 RSpec.describe ErgastF1::Season do  
   it "Handles a non-JSON response from the ErgastF1 server with a helpful message" do
     pending("not implemented")

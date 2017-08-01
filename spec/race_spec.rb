@@ -1,3 +1,4 @@
+require "spec_helper"
 RSpec.describe ErgastF1::Race do
 
   describe ".result" do
@@ -20,7 +21,7 @@ RSpec.describe ErgastF1::Race do
     it "returns an error if the supplied round number doesn't exist for the year" do
       VCR.use_cassette("nonexistent_round") do
         race = ErgastF1::Race.new(year: 1989, round: 20)
-        expect {race.result}.to raise_error(RaceNotFound, "The supplied round number does not exist for this season")
+        expect {race.result}.to raise_error(BadQuery, "The supplied race could not be found.")
       end
       
     end
@@ -34,7 +35,7 @@ RSpec.describe ErgastF1::Race do
 
     it "returns an error if the supplied circuit name doesn't exist for the year" do
       VCR.use_cassette("nonexistent_1989_circuit_name") do
-        expect {ErgastF1::Race.new(year: 1989, circuit: "Malaysia").result}.to raise_error(CircuitNotFound, "The supplied circuit does not exist for this season")
+        expect {ErgastF1::Race.new(year: 1989, circuit: "Malaysia").result}.to raise_error(BadQuery, "The supplied race could not be found.")
       end
     end
 
@@ -56,8 +57,7 @@ RSpec.describe ErgastF1::Race do
     end
     
     it "returns a helpful message if the year supplied is before 2004" do
-      race = ErgastF1::Race.new(year: 1998, round: 1)
-      expect {race.fastest_lap}.to raise_error(BadQuery, "Fastest lap data isn't available for rounds before 2004")
+      expect {ErgastF1::Race.new(year: 1998, round: 1).fastest_lap}.to raise_error(BadQuery, "Fastest lap data isn't available for races before 2004")
     end
   end
 
@@ -69,8 +69,7 @@ RSpec.describe ErgastF1::Race do
     end
 
     it "returns the finishing position of a supplied driver by name" do
-      race = ErgastF1::Race.new(year: 1994, circuit: "Monaco")
-      senna_finishing_position = 
+      race = ErgastF1::Race.new(year: 1994, circuit: "Monaco") 
       expect{race.finishing_position("Senna")}.to raise_error(BadQuery, "The supplied driver did not compete in this race.")
     end
   end
