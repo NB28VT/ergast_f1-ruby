@@ -13,7 +13,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 30 Jul 2017 22:30:22 GMT
+      - Tue, 01 Aug 2017 12:48:14 GMT
       Server:
       - Apache/2.2.15 (CentOS)
       X-Powered-By:
@@ -27,8 +27,8 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: '{"MRData":{"xmlns":"http:\/\/ergast.com\/mrd\/1.4","series":"f1","url":"http://ergast.com/api/f1/1989/circuits/malaysia/results.json","limit":"30","offset":"0","total":"0","RaceTable":{"season":"1989","circuitId":"malaysia","Races":[]}}}'
     http_version: 
-  recorded_at: Sun, 30 Jul 2017 21:38:11 GMT
+  recorded_at: Tue, 01 Aug 2017 11:56:03 GMT
 recorded_with: VCR 3.0.3

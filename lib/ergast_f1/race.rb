@@ -4,17 +4,16 @@ module ErgastF1
       @year = year || Time.now.year
       # TODO: default circuit fallback?
       @circuit = circuit
-      @round = round || "last"
+      @round = round
     end
 
     def result
-      # Handle nil values
       if @round
         race_result("#{@year}/#{@round}/results.json") || (raise RaceNotFound, "The supplied round number does not exist for this season")
       elsif @circuit
         race_result("#{@year}/circuits/#{@circuit}/results.json") || (raise CircuitNotFound, "The supplied circuit does not exist for this season")
       else
-        race_result("current/last/results.json")
+        race_result("#{@year}/last/results.json")
       end
     end
 

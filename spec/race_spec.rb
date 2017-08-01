@@ -25,21 +25,22 @@ RSpec.describe ErgastF1::Race do
 
     it "returns an error if the supplied circuit name doesn't exist for the year" do
       VCR.use_cassette("nonexistent_1989_circuit_name") do
-        race = ErgastF1::Race.new(year: 1989, circuit: "Malaysia")
-        expect {race.result}.to raise_error(CircuitNotFound, "The supplied circuit does not exist for this season")
+        expect {ErgastF1::Race.new(year: 1989, circuit: "Malaysia").result}.to raise_error(CircuitNotFound, "The supplied circuit does not exist for this season")
       end
     end
 
-    it "returns the latest race results if no race is supplied" do
-      # Note this will change in the future
-      VCR.use_cassette("latest_race_result") do
-        result = ErgastF1::Race.new.result
-        expect(result).to eq(ExpectedVars::Race::LATEST_RACE)
-      end
-    end
+
+    # Keep this test in sync or remove
+    # it "returns the latest race results if no race is supplied" do
+    #   # Note this will change in the future
+    #   VCR.use_cassette("latest_race_result") do
+    #     result = ErgastF1::Race.new.result
+    #     expect(result).to eq(ExpectedVars::Race::LATEST_RACE)
+    #   end
+    # end
 
     it "returns the final season race results if a season is supplied, but a round isn't" do
-      VCR.use_cassette("jerez_1997") do
+      VCR.use_cassette("last_round_1997") do
         result = ErgastF1::Race.new(year: 1997).result
         expect(result).to eq(ExpectedVars::Race::LAST_ROUND_1997)
       end
