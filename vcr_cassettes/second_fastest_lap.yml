@@ -1,0 +1,33 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ergast.com/api/f1/2017/1/fastest/2.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers: {}
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Tue, 08 Aug 2017 02:01:07 GMT
+      Server:
+      - Apache/2.2.15 (CentOS)
+      X-Powered-By:
+      - PHP/5.3.3
+      Content-Length:
+      - '111'
+      Connection:
+      - close
+      Content-Type:
+      - text/html; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: "<html>\r\n  <head>\r\n    <title>Error</title>\r\n  </head>\r\n  <body>\r\n
+        \   <h3>Bad Request</h3>\r\n  </body>\r\n</html>\r\n"
+    http_version: 
+  recorded_at: Tue, 08 Aug 2017 01:09:15 GMT
+recorded_with: VCR 3.0.3

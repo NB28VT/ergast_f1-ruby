@@ -19,6 +19,29 @@ RSpec.describe ErgastF1::Season do
     end 
   end
 
+  describe ".winners" do
+    it "returns a list of winners for a given season by driver" do
+      pending("not implemented")
+      fail
+      # VCR.use_cassette("suzuka_1989_by_circuit_name") do
+      #   result = ErgastF1::Race.new(year: 1989, circuit: "Suzuka").result
+      #   expect(result).to eq(ExpectedVars::Race::SUZUKA_1989)
+      # end
+    end
+  end
+
+  describe ".winners" do
+    it "returns a list of winners for a given season by constructor" do
+      pending("not implemented")
+      fail
+      
+      # VCR.use_cassette("suzuka_1989_by_circuit_name") do
+      #   result = ErgastF1::Race.new(year: 1989, circuit: "Suzuka").result
+      #   expect(result).to eq(ExpectedVars::Race::SUZUKA_1989)
+      # end
+    end
+  end
+
   describe ".constructor_standings" do
     it "returns the constructor's championship standings" do
       VCR.use_cassette("construction_standings") do
