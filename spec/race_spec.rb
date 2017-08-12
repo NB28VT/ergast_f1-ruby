@@ -1,6 +1,8 @@
 require "spec_helper"
 RSpec.describe ErgastF1::Race do
 
+  # TODO: ADD CONTEXT BLOCKS!
+
   describe ".result" do
     # Keep this test in sync or remove. Maybe just do 200 and test results are present?
     # it "returns the latest race results if no race is supplied" do
@@ -71,22 +73,26 @@ RSpec.describe ErgastF1::Race do
     end
 
     it "returns a race result by finishing status when supplied a season year" do
-      pending("not implemented")
-      fail
-      # VCR.use_cassette("hungary_2017_finishers") do
-      #   race = ErgastF1::Race.new(year: 2017, circuit: "Hungaroring")
-      #   expect(race.result({status: "Collision"})).to eq(ExpectedVars::Race::HUNGARY_2017_COLLISION_STATUS)
-      # end
+      VCR.use_cassette("collisions_hungary_2017") do
+        race = ErgastF1::Race.new(year: 2017, circuit: "Hungaroring")
+        expect(race.result({status: "Collision"})).to eq(ExpectedVars::Race::HUNGARY_2017_COLLISION_STATUS)
+      end
     end
 
-    it "returns an empty array if a finishing status is supplied but isn't present in the result" do
-      pending("not implemented")
-      fail
-      # VCR.use_cassette("engine_failure_hungary_2017") do
-      #   # TODO: CHANGE TEST IF THERE WERE ENGINE FAILURES IN HUNGARY 2017
-      #   result = ErgastF1::Race.new(year: 2017, circuit: "Hungaroring", status: "Engine").result
-      #   expect(result).to eq(ExpectedVars::Race::ENGINE_FAILURES_HUNGRY)
-      # end
+    it "returns a helpful error message if a finishing status is supplied but doesn't apply to any of the results" do
+      VCR.use_cassette("engine_failure_hungary_2017") do
+        expect {
+          ErgastF1::Race.new(year: 2017, circuit: "Hungaroring").result(status: "Engine").raise_error(BadQuery, "No results found.")
+        }
+      end
+    end
+
+    it "returns a helpful error if the user supplies an invalid status name" do
+      VCR.use_cassette("engine_failure_hungary_2017") do
+        expect {
+          ErgastF1::Race.new(year: 2017, circuit: "Hungaroring").result(status: "UNICORN EXPLOSION")
+        }.to raise_error(BadQuery, "Invalid status supplied. Valid status arguments are: Finished, Disqualified, Accident, Collision, Engine, Gearbox, Transmission, Clutch, Hydraulics, Electrical, Spun, Radiator, Suspension, Brakes, Differential, Overheating, Mechanical, Tyre, Driver, Puncture, Driveshaft.")
+      end
     end
 
     it "returns the final season race results if a season is supplied, but a round isn't" do

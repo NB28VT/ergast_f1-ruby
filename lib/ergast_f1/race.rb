@@ -1,5 +1,27 @@
 module ErgastF1
   class Race
+    STATUS_TABLE = {"Finished" => "1",
+       "Disqualified" => "2",
+       "Accident" => "3",
+       "Collision" => "4",
+       "Engine" => "5",
+       "Gearbox" => "6",
+       "Transmission" => "7",
+       "Clutch" => "8",
+       "Hydraulics" => "9",
+       "Electrical" => "10",
+       "Spun" => "20",
+       "Radiator" => "21",
+       "Suspension" => "22",
+       "Brakes" => "23",
+       "Differential" => "24",
+       "Overheating" => "25",
+       "Mechanical" => "26",
+       "Tyre" => "27",
+       "Driver Seat" => "28",
+       "Puncture" => "29",
+       "Driveshaft" => "30"
+     }
     
     def initialize(year: nil, circuit: nil, round: nil)
       
@@ -23,10 +45,8 @@ module ErgastF1
     end
 
     def finishing_position(driver)
-      # Not ideal to parse this, see if can find endpoint that supports this
       driver_result = result.find{|r| r["Driver"]["driverId"] == driver.downcase}
       raise BadQuery, "The supplied driver did not compete in this race." if driver_result.nil?
-      # TODO: returns 0 on non 
       return driver_result.dig("position").to_i
     end
 
@@ -46,13 +66,16 @@ module ErgastF1
       return "/results/#{query_params[:position]}" if query_params[:position]
       return "/constructors/#{query_params[:constructor]}/results" if query_params[:constructor]
       return "/grid/#{query_params[:grid_position]}/results" if query_params[:grid_position]
-      return "/status/#{query_params[:status]}/results" if query_params[:status]
+      return "/status/#{resolve_finishing_status(query_params[:status])})/results" if query_params[:status]
       return "/results"
+    end
+
+    def resolve_finishing_status(status)
+      STATUS_TABLE[status] || (raise BadQuery, "Invalid status supplied. Valid status arguments are: Finished, Disqualified, Accident, Collision, Engine, Gearbox, Transmission, Clutch, Hydraulics, Electrical, Spun, Radiator, Suspension, Brakes, Differential, Overheating, Mechanical, Tyre, Driver, Puncture, Driveshaft.")
     end
 
     def race_data(endpoint)
       parsed_response = ErgastClient.new(endpoint).api_get_request
-      # Possible this could be unreliable
       race_results = parsed_response.dig("MRData", "RaceTable", "Races")
       return nil if race_results.empty?
       race_results.first["Results"]
