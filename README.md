@@ -1,9 +1,6 @@
 # ErgastF1-Ruby
-ErgastF1-Ruby is a Ruby gem wrapper for using [ErgastF1 API]http://ergast.com/mrd/].
-It currently supports querying Formula 1 race results by driver, constructor, finishing position and finshing status. Future features include support for 
- 
-
-TODO: Delete this and the text above, and describe your gem
+ErgastF1-Ruby is a Ruby gem wrapper for using the [ErgastF1 API](http://ergast.com/mrd/).
+It currently supports querying Formula 1 race results by driver, constructor, finishing position, starting position and finshing status. Future features include querying lap time data, constructor, driver and circuit data. This is my first full Ruby gem and I'm very open to suggestions!
 
 ## Installation
 
@@ -38,18 +35,18 @@ BadQuery, "No results found."
 ```
 
 You can query the results of a race using the `.result()` method, which accepts a hash of query parameters. For example, to get the result for a given driver in the event, supply the driver's name:
+
 ```
 race = ErgastF1::Race.new(year: 2017, circuit: "Hungaroring")
 race.result({driver: "Vettel"})
 ```
+
 Other valid query parameters include:
-```
 position - result by final finishing position. Accepts a number.
 grid_position - result by starting position. Accepts a number.
 constructor - result by constructor. Accepts a constructor name (ex. "Ferrari")
 status - result by finshing status (ex. "Finished" for drivers that completed the event, and "Engine" for drivers that ended the race with an engine failure)
 
-```
 
 ## Development
 
