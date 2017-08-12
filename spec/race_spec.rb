@@ -41,7 +41,7 @@ RSpec.describe ErgastF1::Race do
     it "returns the result of a race when supplied a season year and a constructor" do
       VCR.use_cassette("race_filtered_on_constructor") do
         race = ErgastF1::Race.new(year: 2017, circuit: "Hungaroring")
-        result = race.result(constructor: "Ferrari")
+        result = race.result({constructor: "Ferrari"})
         expect(result).to eq(ExpectedVars::Race::FERRARI_RESULTS_HUNGARY_2017)
       end
     end
@@ -50,7 +50,7 @@ RSpec.describe ErgastF1::Race do
       VCR.use_cassette("race_filtered_on_nonexistent_constructor") do
         expect {
           ErgastF1::Race.new(year: 2017, circuit: "Hungaroring")
-          .result(constructor: "Lotus")
+          .result({constructor: "Lotus"})
         }.to raise_error(BadQuery, "No results found.")
       end
     end
@@ -58,7 +58,7 @@ RSpec.describe ErgastF1::Race do
     it "returns a race result by grid position when supplied a season year" do
       VCR.use_cassette("race_by_grid_position") do
         race = ErgastF1::Race.new(year: 2017, circuit: "Hungaroring")
-        expect(race.result(grid_position: 2)).to eq(ExpectedVars::Race::STARTED_SECOND_HUNGARY_2017)
+        expect(race.result({grid_position: 2})).to eq(ExpectedVars::Race::STARTED_SECOND_HUNGARY_2017)
       end
     end
 
@@ -71,10 +71,12 @@ RSpec.describe ErgastF1::Race do
     end
 
     it "returns a race result by finishing status when supplied a season year" do
-      VCR.use_cassette("hungary_2017_finishers") do
-        race = ErgastF1::Race.new(year: 2017, circuit: "Hungaroring")
-        expect(race.result(status: "Collision")).to eq(ExpectedVars::Race::HUNGARY_2017_COLLISION_STATUS)
-      end
+      pending("not implemented")
+      fail
+      # VCR.use_cassette("hungary_2017_finishers") do
+      #   race = ErgastF1::Race.new(year: 2017, circuit: "Hungaroring")
+      #   expect(race.result({status: "Collision"})).to eq(ExpectedVars::Race::HUNGARY_2017_COLLISION_STATUS)
+      # end
     end
 
     it "returns an empty array if a finishing status is supplied but isn't present in the result" do
@@ -94,10 +96,10 @@ RSpec.describe ErgastF1::Race do
       end
     end
 
-    it "returns the finishing position of a supplied driver by name and a round by circuit name" do
+    it "returns the finishing result of a supplied driver by name and a round by circuit name" do
       VCR.use_cassette("vettel_result_hungaroring_2017_by_circuit") do
         race = ErgastF1::Race.new(year: 2017, circuit: "Hungaroring")
-        vettel_finishing_position = race.result(driver: "Vettel")
+        vettel_finishing_position = race.result({driver: "Vettel"})
         expect(vettel_finishing_position).to eq(1)
       end
     end
@@ -105,7 +107,7 @@ RSpec.describe ErgastF1::Race do
     it "returns the finishing position of a supplied driver by name and a round by number" do
       VCR.use_cassette("vettel_result_hungaroring_2017_by_round_number") do
         race = ErgastF1::Race.new(year: 2017, round: 11)
-        vettel_finishing_position = race.result(driver: "Vettel")
+        vettel_finishing_position = race.result({driver: "Vettel"})
         expect(vettel_finishing_position).to eq(1)
       end
     end
@@ -113,7 +115,7 @@ RSpec.describe ErgastF1::Race do
     it "returns an error if the supplied driver did not compete in this race" do
       VCR.use_cassette("senna_monaco_1994") do
         race = ErgastF1::Race.new(year: 1994, circuit: "Monaco") 
-        expect{race.result(driver: "Senna")}.to raise_error(BadQuery, "No results found.")
+        expect{race.result({driver: "Senna"})}.to raise_error(BadQuery, "The supplied driver did not compete in this race.")
       end
     end
   end
@@ -124,13 +126,6 @@ RSpec.describe ErgastF1::Race do
         race = ErgastF1::Race.new(year: 2017, round: 11)
         vettel_finishing_position = race.finishing_position("Vettel")
         expect(vettel_finishing_position).to eq(1)
-      end
-    end
-
-    it "returns an error if the supplied driver did not compete in this race" do
-      VCR.use_cassette("senna_monaco_1994") do
-        race = ErgastF1::Race.new(year: 1994, circuit: "Monaco") 
-        expect{race.finishing_position("Senna")}.to raise_error(BadQuery, "No results found.")
       end
     end
   end
@@ -145,11 +140,13 @@ RSpec.describe ErgastF1::Race do
     end
 
     it "returns all of the laptime rankings if no position is supplied" do
-      VCR.use_cassette("fastest_lap_australia_2017") do
-        race = ErgastF1::Race.new(year: 2017, round: 1)
-        result = race.laptime_rankings
-        expect(result).to eq(ExpectedVars::Race::LAPTIME_RANKINGS_AUSTRALIA_2017)
-      end
+      pending("Believed not supported by Ergast")
+      fail
+      # VCR.use_cassette("fastest_lap_australia_2017") do
+      #   race = ErgastF1::Race.new(year: 2017, round: 1)
+      #   result = race.laptime_rankings
+      #   expect(result).to eq(ExpectedVars::Race::LAPTIME_RANKINGS_AUSTRALIA_2017)
+      # end
     end
 
     it "returns a ranked lap of the race that is not the fastest lap" do
@@ -161,7 +158,7 @@ RSpec.describe ErgastF1::Race do
     end
 
     it "returns a helpful message if the year supplied is before 2004" do
-      expect {ErgastF1::Race.new(year: 1998, round: 1).laptime_rankings(1)}.to raise_error(BadQuery, "No results found.")
+      expect {ErgastF1::Race.new(year: 1998, round: 1).laptime_rankings(1)}.to raise_error(BadQuery, "Fastest lap data isn't available for races before 2004")
     end
   end
 end

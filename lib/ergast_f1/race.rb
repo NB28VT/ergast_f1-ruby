@@ -19,13 +19,12 @@ module ErgastF1
 
     def laptime_rankings(position=nil)
       raise BadQuery, "Fastest lap data isn't available for races before 2004" if @year < 2004
-      race_data("#{race_path}/fastest/#{position}")["Results"].first
+      race_data("#{race_path}/fastest/#{position}/results")
     end
 
     def finishing_position(driver)
-      full_result = result
       # Not ideal to parse this, see if can find endpoint that supports this
-      driver_result = full_result.dig("Results").find{|r| r["Driver"]["driverId"] == driver.downcase}
+      driver_result = result.find{|r| r["Driver"]["driverId"] == driver.downcase}
       raise BadQuery, "The supplied driver did not compete in this race." if driver_result.nil?
       # TODO: returns 0 on non 
       return driver_result.dig("position").to_i
@@ -46,6 +45,7 @@ module ErgastF1
     def query_path(query_params)
       return "/results/#{query_params[:position]}" if query_params[:position]
       return "/constructors/#{query_params[:constructor]}/results" if query_params[:constructor]
+      return "/grid/#{query_params[:grid_position]}/results" if query_params[:grid_position]
       return "/status/#{query_params[:status]}/results" if query_params[:status]
       return "/results"
     end
@@ -53,7 +53,9 @@ module ErgastF1
     def race_data(endpoint)
       parsed_response = ErgastClient.new(endpoint).api_get_request
       # Possible this could be unreliable
-      parsed_response.dig("MRData", "RaceTable", "Races").first
+      race_results = parsed_response.dig("MRData", "RaceTable", "Races")
+      return nil if race_results.empty?
+      race_results.first["Results"]
     end
   end
 end

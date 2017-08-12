@@ -13,7 +13,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 02 Aug 2017 00:10:29 GMT
+      - Sat, 12 Aug 2017 22:03:02 GMT
       Server:
       - Apache/2.2.15 (CentOS)
       X-Powered-By:
@@ -32,5 +32,5 @@ http_interactions:
         Grand Prix","Circuit":{"circuitId":"albert_park","url":"http://en.wikipedia.org/wiki/Melbourne_Grand_Prix_Circuit","circuitName":"Albert
         Park Grand Prix Circuit","Location":{"lat":"-37.8497","long":"144.968","locality":"Melbourne","country":"Australia"}},"date":"2017-03-26","time":"05:00:00Z","Results":[{"number":"7","position":"4","positionText":"4","points":"12","Driver":{"driverId":"raikkonen","permanentNumber":"7","code":"RAI","url":"http:\/\/en.wikipedia.org\/wiki\/Kimi_R%C3%A4ikk%C3%B6nen","givenName":"Kimi","familyName":"Räikkönen","dateOfBirth":"1979-10-17","nationality":"Finnish"},"Constructor":{"constructorId":"ferrari","url":"http:\/\/en.wikipedia.org\/wiki\/Scuderia_Ferrari","name":"Ferrari","nationality":"Italian"},"grid":"4","laps":"57","status":"Finished","Time":{"millis":"5074065","time":"+22.393"},"FastestLap":{"rank":"1","lap":"56","Time":{"time":"1:26.538"},"AverageSpeed":{"units":"kph","speed":"220.605"}}}]}]}}}'
     http_version: 
-  recorded_at: Tue, 01 Aug 2017 23:18:18 GMT
+  recorded_at: Sat, 12 Aug 2017 21:10:59 GMT
 recorded_with: VCR 3.0.3
