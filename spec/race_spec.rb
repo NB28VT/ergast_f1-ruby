@@ -4,14 +4,6 @@ RSpec.describe ErgastF1::Race do
   # TODO: ADD CONTEXT BLOCKS!
 
   describe ".result" do
-    # Keep this test in sync or remove. Maybe just do 200 and test results are present?
-    # it "returns the latest race results if no race is supplied" do
-    #   # Note this will change in the future
-    #   VCR.use_cassette("latest_race_result") do
-    #     result = ErgastF1::Race.new.result
-    #     expect(result).to eq(ExpectedVars::Race::LATEST_RACE)
-    #   end
-    # end
 
     it "returns the result of a race when supplied a season year and a round number" do
       VCR.use_cassette("suzuka_1989_by_round") do
