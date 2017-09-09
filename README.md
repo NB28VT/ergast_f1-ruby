@@ -42,10 +42,10 @@ race.result({driver: "Vettel"})
 ```
 
 Other valid query parameters include:
-position - result by final finishing position. Accepts a number.
-grid_position - result by starting position. Accepts a number.
-constructor - result by constructor. Accepts a constructor name (ex. "Ferrari")
-status - result by finshing status (ex. "Finished" for drivers that completed the event, and "Engine" for drivers that ended the race with an engine failure)
+*position - result by final finishing position. Accepts a number.
+*grid_position - result by starting position. Accepts a number.
+*constructor - result by constructor. Accepts a constructor name (ex. "Ferrari")
+*status - result by finshing status (ex. "Finished" for drivers that completed the event, and "Engine" for drivers that ended the race with an engine failure)
 
 
 ## Development
