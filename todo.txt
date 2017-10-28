@@ -1,1 +1,31 @@
+FEATURE LIST:
+
+SEASON
+[ ] Get a list of races scheduled in a given season
+[ ] Get a list of race results for a given season
+[ ] Get a list of all seasons supported by the API (and Wikipedia links)
+[ ] Refine a season search by circuit
+[ ] Refine a season search by constructor
+[ ] Refine a season search by driver
+[ ] (Optional) Refine a season search by result
+[ ] (Optional) Refine a season search by grid position
+[ ] (Optional) Refine a season search by status
+[ ] (Optional) Refine a season search by fastest
+
+RACE
+[ ] Get a list of races for a constructor
+[ ] Get a list of races for a circuit
+[ ] Get a list of races for driver
+[ ] (Optional) Refine a race search by result
+[ ] (Optional) Refine a race search by grid position
+[ ] (Optional) Refine a race search by status
+[ ] (Optional) Refine a race search by fastest
+
+
 [ ] Converter module for normalizing nationality names (eg. "British" should be "Britain") for ease of flag use
+
+
+REFACTORS:
+[ ] Create result validator to replace expected vars
+[ ] Include flag jpgs in the gem?
+

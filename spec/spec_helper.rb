@@ -1,7 +1,5 @@
 require "bundler/setup"
 require "ergast_f1"
-require "expected_vars/season"
-require "expected_vars/race"
 require "vcr"
 require "pry"
 

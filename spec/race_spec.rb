@@ -1,14 +1,18 @@
 require "spec_helper"
-RSpec.describe ErgastF1::Race do
+require "support/spec_helpers/response_validator"
 
+RSpec.configure do |c|
+  c.include SpecHelpers::ResponseValidator::Race
+end
+
+RSpec.describe ErgastF1::Race do
   # TODO: ADD CONTEXT BLOCKS!
 
   describe ".result" do
-
     it "returns the result of a race when supplied a season year and a round number" do
       VCR.use_cassette("suzuka_1989_by_round") do
         result = ErgastF1::Race.new(year: 1989, round: 15).result
-        expect(result).to eq(ExpectedVars::Race::SUZUKA_1989)
+        expect(valid_race_result?(result)).to be true
       end
     end
 
@@ -22,7 +26,7 @@ RSpec.describe ErgastF1::Race do
     it "returns the result of a race when supplied a season year and circuit name" do
       VCR.use_cassette("suzuka_1989_by_circuit_name") do
         result = ErgastF1::Race.new(year: 1989, circuit: "Suzuka").result
-        expect(result).to eq(ExpectedVars::Race::SUZUKA_1989)
+        expect(valid_race_result?(result)).to be true
       end
     end
 
@@ -34,9 +38,11 @@ RSpec.describe ErgastF1::Race do
 
     it "returns the result of a race when supplied a season year and a constructor" do
       VCR.use_cassette("race_filtered_on_constructor") do
+        constructor =  "Ferrari"
         race = ErgastF1::Race.new(year: 2017, circuit: "Hungaroring")
-        result = race.result({constructor: "Ferrari"})
-        expect(result).to eq(ExpectedVars::Race::FERRARI_RESULTS_HUNGARY_2017)
+        result = race.result({constructor: constructor})
+        expect(valid_race_result?(result)).to be true
+        expect(for_constructor?(result, constructor)).to be true
       end
     end
 
@@ -52,7 +58,10 @@ RSpec.describe ErgastF1::Race do
     it "returns a race result by grid position when supplied a season year" do
       VCR.use_cassette("race_by_grid_position") do
         race = ErgastF1::Race.new(year: 2017, circuit: "Hungaroring")
-        expect(race.result({grid_position: 2})).to eq(ExpectedVars::Race::STARTED_SECOND_HUNGARY_2017)
+        position = 2
+        result = race.result({grid_position: position})
+        expect(valid_race_result?(result)).to be true
+        expect(for_position?(result, position)).to be true
       end
     end
 
@@ -67,7 +76,11 @@ RSpec.describe ErgastF1::Race do
     it "returns a race result by finishing status when supplied a season year" do
       VCR.use_cassette("collisions_hungary_2017") do
         race = ErgastF1::Race.new(year: 2017, circuit: "Hungaroring")
-        expect(race.result({status: "Collision"})).to eq(ExpectedVars::Race::HUNGARY_2017_COLLISION_STATUS)
+        status = "Collision"
+        result = race.result({status: status})
+
+        expect(valid_race_result?(result)).to be true
+        expect(for_status?(result, status)).to be true
       end
     end
 
@@ -89,8 +102,9 @@ RSpec.describe ErgastF1::Race do
 
     it "returns the final season race results if a season is supplied, but a round isn't" do
       VCR.use_cassette("last_round_1997") do
+        # TODO: MAKE THIS A BETTER TEST
         result = ErgastF1::Race.new(year: 1997).result
-        expect(result).to eq(ExpectedVars::Race::LAST_ROUND_1997)
+        expect(valid_race_result?(result)).to be true
       end
     end
 
@@ -132,8 +146,10 @@ RSpec.describe ErgastF1::Race do
     it "returns the fastest lap of the race" do
       VCR.use_cassette("fastest_lap_australia_2017") do
         race = ErgastF1::Race.new(year: 2017, round: 1)
-        result = race.laptime_rankings(1)
-        expect(result).to eq(ExpectedVars::Race::FASTEST_LAP_AUSTRALIA_2017)
+        finishing_position = 1
+        result = race.laptime_rankings(finishing_position)
+        expect(valid_race_result?(result)).to be true
+        expect(for_fast_lap_ranking?(result, finishing_position)).to be true
       end
     end
 
@@ -150,8 +166,11 @@ RSpec.describe ErgastF1::Race do
     it "returns a ranked lap of the race that is not the fastest lap" do
       VCR.use_cassette("second_fastest_lap") do
         race = ErgastF1::Race.new(year: 2017, round: 1)
-        result = race.laptime_rankings(2)
-        expect(result).to eq(ExpectedVars::Race::SECOND_FASTEST_LAP_AUSTRALIA_2017)
+        finishing_position = 2
+        result = race.laptime_rankings(finishing_position)
+        
+        expect(valid_race_result?(result)).to be true
+        expect(for_fast_lap_ranking?(result, finishing_position)).to be true
       end
     end
 
