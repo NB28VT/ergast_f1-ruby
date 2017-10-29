@@ -18,6 +18,12 @@ module SpecHelpers
         return true
       end
 
+      def for_driver?(result, driver_name)
+        return false unless result.all?{|driver| driver.dig("Driver", "familyName") == driver_name}
+        return true
+      end
+
+
       def for_position?(result, position)
         return false unless result.size == 1
         return false unless result[0]["position"] == position.to_s

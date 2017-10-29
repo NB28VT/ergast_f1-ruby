@@ -38,6 +38,7 @@ module ErgastF1
     end
 
     def driver_result(driver_name)
+      race_data(race_path + "/drivers/#{driver_name}/results")
     end
 
     def starting_position(position)
