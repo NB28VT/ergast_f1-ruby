@@ -29,11 +29,8 @@ module ErgastF1
       @round = round
     end
 
-    # driver: nil, constructor: nil, finishing_position: nil, status: nil, grid_position: nil
-    def result(query_params = {})
-      # return finishing_position(query_params[:driver]) if query_params[:driver]
-      # query_path = query_path(query_params)
-      # race_data(race_path + query_path) || (raise BadQuery, "No results found.")
+    def result
+      race_data(race_path + "/results")
     end
 
     def finishing_position(driver)
@@ -87,7 +84,7 @@ module ErgastF1
     def race_data(endpoint)
       parsed_response = ErgastClient.new(endpoint).api_get_request
       race_results = parsed_response.dig("MRData", "RaceTable", "Races")
-      return nil if race_results.empty?
+      return [] if race_results.empty?
       race_results.first["Results"]
     end
   end

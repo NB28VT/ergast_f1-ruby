@@ -17,10 +17,9 @@ RSpec.describe ErgastF1::Race do
       end
     end
 
-    it "returns an error if the supplied round number doesn't exist for the year" do
+    it "returns an empty array if the supplied round number doesn't exist for the year" do
       VCR.use_cassette("nonexistent_round") do
-        race = ErgastF1::Race.new(year: 1989, round: 20)
-        expect {race.result}.to raise_error(BadQuery, "No results found.")
+        expect(ErgastF1::Race.new(year: 1989, round: 20).result).to eq([])
       end  
     end
 
