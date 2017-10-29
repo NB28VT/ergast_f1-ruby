@@ -24,30 +24,40 @@ module ErgastF1
      }
     
     def initialize(year: nil, circuit: nil, round: nil)
-      
       @year = year || Time.now.year
       @circuit = circuit
       @round = round
     end
 
-
-    # TODO: Clean up query params
     # driver: nil, constructor: nil, finishing_position: nil, status: nil, grid_position: nil
     def result(query_params = {})
-      return finishing_position(query_params[:driver]) if query_params[:driver]
-      query_path = query_path(query_params)
-      race_data(race_path + query_path) || (raise BadQuery, "No results found.")
-    end
-
-    def laptime_rankings(position=nil)
-      raise BadQuery, "Fastest lap data isn't available for races before 2004" if @year < 2004
-      race_data("#{race_path}/fastest/#{position}/results")
+      # return finishing_position(query_params[:driver]) if query_params[:driver]
+      # query_path = query_path(query_params)
+      # race_data(race_path + query_path) || (raise BadQuery, "No results found.")
     end
 
     def finishing_position(driver)
       driver_result = result.find{|r| r["Driver"]["driverId"] == driver.downcase}
       raise BadQuery, "The supplied driver did not compete in this race." if driver_result.nil?
       return driver_result.dig("position").to_i
+    end
+
+    def constructor_result(constuctor_name)
+    end
+
+    def driver_result(driver_name)
+      
+    end
+
+    def starting_position(position)
+    end
+
+    def finishing_status(status)
+    end
+
+    def laptime_rankings(position=nil)
+      raise BadQuery, "Fastest lap data isn't available for races before 2004" if @year < 2004
+      race_data("#{race_path}/fastest/#{position}/results")
     end
 
     private

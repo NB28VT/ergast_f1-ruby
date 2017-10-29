@@ -26,6 +26,8 @@ RACE
 
 
 REFACTORS:
-[ ] Create result validator to replace expected vars
+
+[x] Create result validator to replace expected vars in race spec
+[ ] Create result validator to replace expected vars in season spec
 [ ] Include flag jpgs in the gem?
 
