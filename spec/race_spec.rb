@@ -40,15 +40,15 @@ RSpec.describe ErgastF1::Race do
   describe ".constructor_result" do
     it "returns the result of a race when supplied a season year and a constructor" do
       VCR.use_cassette("race_filtered_on_constructor") do
-        constructor_result = race.constructor("Ferrari")
+        constructor_result = race.constructor_result("Ferrari")
         expect(valid_race_result?(constructor_result)).to be true
         expect(for_constructor?(constructor_result, "Ferrari")).to be true
       end
     end
 
-    it "returns an error if the supplied constructor didn't compete in the event" do
+    it "returns an empty array if the supplied constructor didn't compete in the event" do
       VCR.use_cassette("race_filtered_on_nonexistent_constructor") do
-        expect{race.constructor("Lotus")}.to raise_error(BadQuery, "No results found.")
+        expect(race.constructor_result("Lotus")).to eq([])
       end
     end
   end

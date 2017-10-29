@@ -33,23 +33,23 @@ module ErgastF1
       race_data(race_path + "/results")
     end
 
-    def finishing_position(driver)
-      driver_result = result.find{|r| r["Driver"]["driverId"] == driver.downcase}
-      raise BadQuery, "The supplied driver did not compete in this race." if driver_result.nil?
-      return driver_result.dig("position").to_i
-    end
-
-    def constructor_result(constuctor_name)
+    def constructor_result(constructor_name)
+      race_data(race_path + "/constructors/#{constructor_name}/results")
     end
 
     def driver_result(driver_name)
-      
     end
 
     def starting_position(position)
     end
 
     def finishing_status(status)
+    end
+
+    def finishing_position(driver)
+      driver_result = result.find{|r| r["Driver"]["driverId"] == driver.downcase}
+      raise BadQuery, "The supplied driver did not compete in this race." if driver_result.nil?
+      return driver_result.dig("position").to_i
     end
 
     def laptime_rankings(position=nil)
