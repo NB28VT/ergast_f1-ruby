@@ -70,10 +70,10 @@ RSpec.describe ErgastF1::Race do
     end
   end
 
-  describe ".starting_position" do
+  describe ".grid_position" do
     it "returns a race result by grid position when supplied a season year" do
       VCR.use_cassette("race_by_grid_position") do
-        position_result = race.starting_position(2)
+        position_result = race.grid_position(2)
         expect(valid_race_result?(position_result)).to be true
         expect(for_position?(position_result, 2)).to be true
       end
@@ -81,17 +81,17 @@ RSpec.describe ErgastF1::Race do
 
     it "returns an empty array if a supplied grid position doesn't exist for an event" do
       VCR.use_cassette("nonexistent_grid_position") do
-        expect(race.starting_position(30)).to eq ([])
+        expect(race.grid_position(30)).to eq ([])
       end
     end
   end
 
   describe ".finishing_status" do
-    it "returns a race result by finishing status when supplied a season year" do
+    it "returns a race result by finishing status when supplied a valid status" do
       VCR.use_cassette("collisions_hungary_2017") do
         status_result = race.finishing_status("Collision")
         expect(valid_race_result?(status_result)).to be true
-        expect(for_status?(status_result, collision)).to be true
+        expect(for_status?(status_result, "Collision")).to be true
       end
     end
   
@@ -115,6 +115,7 @@ RSpec.describe ErgastF1::Race do
       end
     end
   end
+
 
   describe ".laptime_rankings" do
     it "returns the fastest lap of the race" do

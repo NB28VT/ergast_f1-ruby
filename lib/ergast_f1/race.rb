@@ -41,10 +41,13 @@ module ErgastF1
       race_data(race_path + "/drivers/#{driver_name}/results")
     end
 
-    def starting_position(position)
+    def grid_position(position)
+      race_data(race_path + "/grid/#{position}/results")
     end
 
     def finishing_status(status)
+      finishing_status = resolve_finishing_status(status)
+      race_data(race_path + "/status/#{finishing_status}/results")
     end
 
     def finishing_position(driver)
@@ -74,7 +77,7 @@ module ErgastF1
       return "/results/#{query_params[:position]}" if query_params[:position]
       return "/constructors/#{query_params[:constructor]}/results" if query_params[:constructor]
       return "/grid/#{query_params[:grid_position]}/results" if query_params[:grid_position]
-      return "/status/#{resolve_finishing_status(query_params[:status])})/results" if query_params[:status]
+      
       return "/results"
     end
 
