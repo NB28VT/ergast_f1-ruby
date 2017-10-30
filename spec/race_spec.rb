@@ -116,13 +116,12 @@ RSpec.describe ErgastF1::Race do
     end
   end
 
-
-  describe ".laptime_rankings" do
+  describe ".laptime_ranking" do
     it "returns the fastest lap of the race" do
       VCR.use_cassette("fastest_lap_australia_2017") do
         race = ErgastF1::Race.new(year: 2017, round: 1)
         finishing_position = 1
-        result = race.laptime_rankings(finishing_position)
+        result = race.laptime_ranking(finishing_position)
         expect(valid_race_result?(result)).to be true
         expect(for_fast_lap_ranking?(result, 1)).to be true
       end
@@ -131,14 +130,14 @@ RSpec.describe ErgastF1::Race do
     it "returns a ranked lap of the race that is not the fastest lap" do
       VCR.use_cassette("second_fastest_lap") do
         race = ErgastF1::Race.new(year: 2017, round: 1)
-        result = race.laptime_rankings(2)
+        result = race.laptime_ranking(2)
         expect(valid_race_result?(result)).to be true
         expect(for_fast_lap_ranking?(result, 2)).to be true
       end
     end
 
     it "returns a helpful message if the year supplied is before 2004" do
-      expect {ErgastF1::Race.new(year: 1998, round: 1).laptime_rankings(1)}.to raise_error(BadQuery, "Fastest lap data isn't available for races before 2004")
+      expect {ErgastF1::Race.new(year: 1998, round: 1).laptime_ranking(1)}.to raise_error(BadQuery, "Fastest lap data isn't available for races before 2004")
     end
   end
 end

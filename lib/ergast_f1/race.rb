@@ -56,9 +56,9 @@ module ErgastF1
       return driver_result.dig("position").to_i
     end
 
-    def laptime_rankings(position=nil)
+    def laptime_ranking(position=nil)
       raise BadQuery, "Fastest lap data isn't available for races before 2004" if @year < 2004
-      race_data("#{race_path}/fastest/#{position}/results")
+      race_data(race_path + "/fastest/#{position}/results")
     end
 
     private
