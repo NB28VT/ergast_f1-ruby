@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ergast.com/api/f1/2017/circuits/Hungaroring/status/4)/results.json
+    uri: http://ergast.com/api/f1/2017/circuits/Hungaroring/status/4/results.json
     body:
       encoding: US-ASCII
       string: ''
@@ -13,7 +13,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 12 Aug 2017 22:37:09 GMT
+      - Tue, 31 Oct 2017 00:19:28 GMT
       Server:
       - Apache/2.2.15 (CentOS)
       X-Powered-By:
@@ -21,16 +21,16 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       Content-Length:
-      - '1129'
+      - '1127'
       Connection:
       - close
       Content-Type:
       - application/json; charset=utf-8
     body:
       encoding: UTF-8
-      string: '{"MRData":{"xmlns":"http:\/\/ergast.com\/mrd\/1.4","series":"f1","url":"http://ergast.com/api/f1/2017/circuits/hungaroring/status/4)/results.json","limit":"30","offset":"0","total":"1","RaceTable":{"season":"2017","circuitId":"hungaroring","status":"4)","Races":[{"season":"2017","round":"11","url":"https:\/\/en.wikipedia.org\/wiki\/2017_Hungarian_Grand_Prix","raceName":"Hungarian
+      string: '{"MRData":{"xmlns":"http:\/\/ergast.com\/mrd\/1.4","series":"f1","url":"http://ergast.com/api/f1/2017/circuits/hungaroring/status/4/results.json","limit":"30","offset":"0","total":"1","RaceTable":{"season":"2017","circuitId":"hungaroring","status":"4","Races":[{"season":"2017","round":"11","url":"https:\/\/en.wikipedia.org\/wiki\/2017_Hungarian_Grand_Prix","raceName":"Hungarian
         Grand Prix","Circuit":{"circuitId":"hungaroring","url":"http://en.wikipedia.org/wiki/Hungaroring","circuitName":"Hungaroring","Location":{"lat":"47.5789","long":"19.2486","locality":"Budapest","country":"Hungary"}},"date":"2017-07-30","time":"12:00:00Z","Results":[{"number":"3","position":"20","positionText":"R","points":"0","Driver":{"driverId":"ricciardo","permanentNumber":"3","code":"RIC","url":"http:\/\/en.wikipedia.org\/wiki\/Daniel_Ricciardo","givenName":"Daniel","familyName":"Ricciardo","dateOfBirth":"1989-07-01","nationality":"Australian"},"Constructor":{"constructorId":"red_bull","url":"http:\/\/en.wikipedia.org\/wiki\/Red_Bull_Racing","name":"Red
         Bull","nationality":"Austrian"},"grid":"6","laps":"0","status":"Collision"}]}]}}}'
     http_version: 
-  recorded_at: Sat, 12 Aug 2017 21:45:06 GMT
+  recorded_at: Mon, 30 Oct 2017 23:28:04 GMT
 recorded_with: VCR 3.0.3
