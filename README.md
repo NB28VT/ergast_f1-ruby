@@ -1,6 +1,6 @@
 # ErgastF1-Ruby
 ErgastF1-Ruby is a Ruby gem wrapper for using the [ErgastF1 API](http://ergast.com/mrd/).
-It currently supports querying Formula 1 race results by driver, constructor, finishing position, starting position and finshing status. Future features include querying lap time data, constructor, driver and circuit data. This is my first full Ruby gem and I'm very open to suggestions!
+It current supports querying Formula 1 race results by season year and round number of circuit name. Additionally, it includes support for filtering a race result by driver, constructor, finishing position, grid position and finishing status/cause of retirement (ex. "Finished", "Gearbox", "Engine"). Future features will include schedules, qualifying results, standings, driver information and more.
 
 ## Installation
 
@@ -21,32 +21,62 @@ Or install it yourself as:
 ## Usage
 
 ### Querying Race Results
-To return all data for a specific race, initialize an instance of `ErgastF1::Race` and supply a season year and either a round number or a circuit name:
+To return all data for a specific race, initialize an instance of `ErgastF1::Race` with a season year and either a round number or a circuit name and call `.result`:
 
 ```
-ErgastF1::Race.new(year: 1989, round: 15)
-ErgastF1::Race.new(year: 1989, circuit: "Suzuka")
+ErgastF1::Race.new(year: 1989, round: 15).result
+ErgastF1::Race.new(year: 1989, circuit: "Suzuka").result
 
 ```
-Results from the ErgastF1 API are supplied as an array. If no results are found, an error message is returned:
+Results from the ErgastF1 API are supplied as an array. If no results are found, an empty array is returned.
 
-```
-BadQuery, "No results found."
-```
-
-You can query the results of a race using the `.result()` method, which accepts a hash of query parameters. For example, to get the result for a given driver in the event, supply the driver's name:
+### Filtering results
+Results can be filtered by a number of parameters:
 
 ```
 race = ErgastF1::Race.new(year: 2017, circuit: "Hungaroring")
-race.result({driver: "Vettel"})
+
+#Constructor Name
+race.constructor_result("Ferrari")
+
+#Driver Family Name
+race.driver_result("Vettel")
+
+#Starting Grid Position
+race.grid_position(6)
+
+#Fastest Laptime Ranking - the driver with the supplied ranking for fastest laptime
+race.laptime_ranking(1)
+
 ```
+### Filtering by finishing status
+ErgastF1-Ruby supports filtering race results by a scored "finishing status", i.e., if the driver finished or, if they retired, the reason why.
+```
+race.finishing_status("Engine")
+```
+Valid Filters For Finishing Status:
 
-Other valid query parameters include:
-*position - result by final finishing position. Accepts a number.
-*grid_position - result by starting position. Accepts a number.
-*constructor - result by constructor. Accepts a constructor name (ex. "Ferrari")
-*status - result by finshing status (ex. "Finished" for drivers that completed the event, and "Engine" for drivers that ended the race with an engine failure)
-
+* Finished
+* Disqualified
+* Accident
+* Collision
+* Engine
+* Gearbox
+* Transmission
+* Clutch
+* Hydraulics
+* Electrical
+* Spun
+* Radiator
+* Suspension
+* Brakes
+* Differential
+* Overheating
+* Mechanical
+* Tyre
+* Driver Seat
+* Puncture
+* Driveshaft
 
 ## Development
 
