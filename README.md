@@ -1,6 +1,6 @@
 # ErgastF1-Ruby
 ErgastF1-Ruby is a Ruby gem wrapper for using the [ErgastF1 API](http://ergast.com/mrd/).
-It current supports querying Formula 1 race results by season year and round number of circuit name. Additionally, it includes support for filtering a race result by driver, constructor, finishing position, grid position and finishing status/cause of retirement (ex. "Finished", "Gearbox", "Engine"). Future features will include schedules, qualifying results, standings, driver information and more.
+It currently supports querying Formula 1 race results by season year and round number or circuit name. Additionally, it includes support for filtering a race result by driver, constructor, finishing position, grid position and finishing status/cause of retirement (ex. "Finished", "Gearbox", "Engine"). Future features will include schedules, qualifying results, standings, driver information and more.
 
 ## Installation
 
@@ -54,7 +54,7 @@ ErgastF1-Ruby supports filtering race results by a scored "finishing status", i.
 ```
 race.finishing_status("Engine")
 ```
-Valid Filters For Finishing Status:
+Valid ilters for finishing status:
 
 * Finished
 * Disqualified
