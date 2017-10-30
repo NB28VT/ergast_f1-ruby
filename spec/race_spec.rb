@@ -108,14 +108,6 @@ RSpec.describe ErgastF1::Race do
     end
   end
 
-  describe ".finishing_position" do
-    it "returns the finishing position of a supplied driver by name and a round by number" do
-      VCR.use_cassette("vettel_result_hungaroring_2017_by_round_number") do
-        expect(race.finishing_position("Vettel")).to eq(1)
-      end
-    end
-  end
-
   describe ".laptime_ranking" do
     it "returns the fastest lap of the race" do
       VCR.use_cassette("fastest_lap_australia_2017") do

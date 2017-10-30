@@ -50,12 +50,6 @@ module ErgastF1
       race_data(race_path + "/status/#{finishing_status}/results")
     end
 
-    def finishing_position(driver)
-      driver_result = result.find{|r| r["Driver"]["driverId"] == driver.downcase}
-      raise BadQuery, "The supplied driver did not compete in this race." if driver_result.nil?
-      return driver_result.dig("position").to_i
-    end
-
     def laptime_ranking(position=nil)
       raise BadQuery, "Fastest lap data isn't available for races before 2004" if @year < 2004
       race_data(race_path + "/fastest/#{position}/results")
@@ -71,14 +65,6 @@ module ErgastF1
       else
         "#{@year}/last"
       end
-    end
-
-    def query_path(query_params)
-      return "/results/#{query_params[:position]}" if query_params[:position]
-      return "/constructors/#{query_params[:constructor]}/results" if query_params[:constructor]
-      return "/grid/#{query_params[:grid_position]}/results" if query_params[:grid_position]
-      
-      return "/results"
     end
 
     def resolve_finishing_status(status)
