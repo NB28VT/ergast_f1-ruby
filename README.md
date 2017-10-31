@@ -23,7 +23,7 @@ Or install it yourself as:
 ### Querying Race Results
 To return all data for a specific race, initialize an instance of `ErgastF1::Race` with a season year and either a round number or a circuit name and call `.result`:
 
-```
+```ruby
 ErgastF1::Race.new(year: 1989, round: 15).result
 ErgastF1::Race.new(year: 1989, circuit: "Suzuka").result
 
@@ -33,7 +33,7 @@ Results from the ErgastF1 API are supplied as an array. If no results are found,
 ### Filtering results
 Results can be filtered by a number of parameters:
 
-```
+```ruby
 race = ErgastF1::Race.new(year: 2017, circuit: "Hungaroring")
 
 #Constructor Name
@@ -51,7 +51,7 @@ race.laptime_ranking(1)
 ```
 ### Filtering by finishing status
 ErgastF1-Ruby supports filtering race results by a scored "finishing status", i.e., if the driver finished or, if they retired, the reason why.
-```
+```ruby
 race.finishing_status("Engine")
 ```
 Valid ilters for finishing status:
