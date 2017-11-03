@@ -1,5 +1,5 @@
 require "spec_helper"
-require "support/spec_helpers/response_validator"
+require "support/spec_helpers/response_validator/race"
 
 RSpec.configure do |c|
   c.include SpecHelpers::ResponseValidator::Race

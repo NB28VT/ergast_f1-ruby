@@ -1,22 +1,21 @@
 require "spec_helper"
+require "support/spec_helpers/response_validator/season"
+
+RSpec.configure do |c|
+  c.include SpecHelpers::ResponseValidator::Season
+end
 
 RSpec.describe ErgastF1::Season do  
-  it "Handles a non-JSON response from the ErgastF1 server with a helpful message" do
-    pending("not implemented")
-    fail
-
-    # Use webmock here
-    # season = ErgastF1::Season.new(1950)
-    # expect {season.races}.to raise_error(ApiError, "Error: invalid JSON reponse from ErgastF1 server")
-  end
-
   describe ".driver_standings" do
-    it "returns the driver's championship standings" do
-      VCR.use_cassette("driver_standings") do
-        standings = ErgastF1::Season.new(1950).driver_standings
-        expect(standings).to eq(ExpectedVars::Season::DRIVER_STANDINGS_1950)
+    context "when supplied a year" do
+      it "returns the driver's championship standings for that year" do
+        VCR.use_cassette("season/driver_standings_1950") do
+          standings = ErgastF1::Season.driver_standings(1950)
+          expect(valid_season?(standings)).to be true
+          expect(for_year?(1950)).to be true
+        end
       end
-    end 
+    end
   end
 
   describe ".winners" do
