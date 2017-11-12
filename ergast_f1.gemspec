@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "ergast_f1"
   spec.version       = ErgastF1::VERSION
   spec.authors       = ["Nathan Burgess"]
-  spec.email         = ["nathan@3playmedia.com"]
+  spec.email         = ["burgess.nathan28@gmail.com"]
 
   spec.summary       = %q{A Ruby wrapper for the ergast F1 API}
   spec.homepage      = ""
@@ -36,7 +36,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "vcr"
   spec.add_development_dependency "webmock"
 
-  spec.add_dependency "json"
-  spec.add_dependency "curb"
+  spec.add_runtime_dependency "json"
+  spec.add_runtime_dependency "curb"
 
 end
