@@ -1,10 +1,9 @@
 module ErgastF1
   class SeasonList
-    def initialize(circuit: nil, constructor: nil, driver_name: nil, finishing_position: nil)
+    def initialize(circuit: nil, constructor: nil, driver_name: nil)
       @circuit = circuit
       @constructor = constructor
       @driver_name = driver_name
-      @finishing_position = finishing_position
 
       return query_results
     end
@@ -13,21 +12,16 @@ module ErgastF1
     private
 
     def query_results
-      endpoint = season_list_path
-
-
+      endpoint = path + "seasons"
       parsed_response = ErgastClient.new(endpoint).api_get_request
-
+      binding.pry_remote
     end
 
-    def season_list_path
+    def path
       url_path = ""
-      url_path += "/drivers/#{@driver_name}" if @driver_name
-      url_path += "/constructor/#{@constructor}" if @constructor
-      url_path += "/constructor/#{@constructor}" if
-
-
-
+      url_path += "drivers/#{@driver_name}/" if @driver_name
+      url_path += "constructor/#{@constructor}/" if @constructor
+      url_path += "circuits/#{@circuit}/" if @circuit
     end
 
 
