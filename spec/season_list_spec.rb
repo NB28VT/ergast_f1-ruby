@@ -1,19 +1,17 @@
 require "spec_helper"
+require "support/spec_helpers/response_validator/season_list"
 
-# Probably not necessary
-# require "support/spec_helpers/response_validator/season_list"
-#
-# RSpec.configure do |c|
-#   c.include SpecHelpers::ResponseValidator::SeasonList
-# end
+RSpec.configure do |c|
+  c.include SpecHelpers::ResponseValidator::SeasonList
+end
 
 RSpec.describe ErgastF1::SeasonList do
   context "when supplied a valid circuit name" do
     it "returns all seasons featuring that circuit" do
       VCR.use_cassette("season_list/suzuka_seasons") do
-        season_list = ErgastF1::SeasonList.new(circuit: "Suzuka")
+        season_list = ErgastF1::SeasonList.find(circuit: "Suzuka")
         expect(valid_season_list?(season_list)).to be true
-        expect(season_list["circuit"]).to eq("suzuka")
+        expect(season_list["circuitId"]).to eq("suzuka")
       end
     end
   end
