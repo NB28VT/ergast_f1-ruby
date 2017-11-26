@@ -1,11 +1,18 @@
 module ErgastF1
   class SeasonList
-    def self.find(circuit: nil, constructor: nil, driver: nil, finishing_position: nil)
+    def self.find(circuit: nil, constructor: nil, driver: nil, rank: nil)
       query_path = ""
       query_path += "drivers/#{driver}/" if driver
       query_path += "constructors/#{constructor}/" if constructor
       query_path += "circuits/#{circuit}/" if circuit
-      query_path += "results/#{finishing_position}/" if finishing_position
+
+      # TODO: RANK AND CONSTRUCTOR AND DRIVER
+
+      if rank && constructor
+        query_path += "constructorStandings/#{rank}/"
+      elsif rank && driver
+        query_path += "driverStandings/#{rank}/"
+      end
 
       return query_results(query_path)
     end

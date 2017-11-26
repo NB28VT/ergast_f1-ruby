@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ergast.com/api/f1/constructors/mindardi/results/1/seasons.json
+    uri: http://ergast.com/api/f1/constructors/mindardi/constructorStandings/1/seasons.json
     body:
       encoding: US-ASCII
       string: ''
@@ -13,7 +13,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 18 Nov 2017 16:40:47 GMT
+      - Sun, 26 Nov 2017 06:10:36 GMT
       Server:
       - Apache/2.2.15 (CentOS)
       X-Powered-By:
@@ -21,14 +21,14 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       Content-Length:
-      - '253'
+      - '278'
       Connection:
       - close
       Content-Type:
       - application/json; charset=utf-8
     body:
       encoding: UTF-8
-      string: '{"MRData":{"xmlns":"http:\/\/ergast.com\/mrd\/1.4","series":"f1","url":"http://ergast.com/api/f1/constructors/mindardi/results/1/seasons.json","limit":"30","offset":"0","total":"0","SeasonTable":{"constructorId":"mindardi","position":"1","Seasons":[]}}}'
+      string: '{"MRData":{"xmlns":"http:\/\/ergast.com\/mrd\/1.4","series":"f1","url":"http://ergast.com/api/f1/constructors/mindardi/constructorstandings/1/seasons.json","limit":"30","offset":"0","total":"0","SeasonTable":{"constructorId":"mindardi","constructorStandings":"1","Seasons":[]}}}'
     http_version: 
-  recorded_at: Sat, 18 Nov 2017 15:49:33 GMT
+  recorded_at: Sun, 26 Nov 2017 05:19:26 GMT
 recorded_with: VCR 3.0.3

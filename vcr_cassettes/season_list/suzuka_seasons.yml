@@ -13,7 +13,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 18 Nov 2017 14:49:23 GMT
+      - Sun, 26 Nov 2017 06:09:37 GMT
       Server:
       - Apache/2.2.15 (CentOS)
       X-Powered-By:
@@ -30,5 +30,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"MRData":{"xmlns":"http:\/\/ergast.com\/mrd\/1.4","series":"f1","url":"http://ergast.com/api/f1/circuits/suzuka/seasons.json","limit":"30","offset":"0","total":"29","SeasonTable":{"circuitId":"suzuka","Seasons":[{"season":"1987","url":"http:\/\/en.wikipedia.org\/wiki\/1987_Formula_One_season"},{"season":"1988","url":"http:\/\/en.wikipedia.org\/wiki\/1988_Formula_One_season"},{"season":"1989","url":"http:\/\/en.wikipedia.org\/wiki\/1989_Formula_One_season"},{"season":"1990","url":"http:\/\/en.wikipedia.org\/wiki\/1990_Formula_One_season"},{"season":"1991","url":"http:\/\/en.wikipedia.org\/wiki\/1991_Formula_One_season"},{"season":"1992","url":"http:\/\/en.wikipedia.org\/wiki\/1992_Formula_One_season"},{"season":"1993","url":"http:\/\/en.wikipedia.org\/wiki\/1993_Formula_One_season"},{"season":"1994","url":"http:\/\/en.wikipedia.org\/wiki\/1994_Formula_One_season"},{"season":"1995","url":"http:\/\/en.wikipedia.org\/wiki\/1995_Formula_One_season"},{"season":"1996","url":"http:\/\/en.wikipedia.org\/wiki\/1996_Formula_One_season"},{"season":"1997","url":"http:\/\/en.wikipedia.org\/wiki\/1997_Formula_One_season"},{"season":"1998","url":"http:\/\/en.wikipedia.org\/wiki\/1998_Formula_One_season"},{"season":"1999","url":"http:\/\/en.wikipedia.org\/wiki\/1999_Formula_One_season"},{"season":"2000","url":"http:\/\/en.wikipedia.org\/wiki\/2000_Formula_One_season"},{"season":"2001","url":"http:\/\/en.wikipedia.org\/wiki\/2001_Formula_One_season"},{"season":"2002","url":"http:\/\/en.wikipedia.org\/wiki\/2002_Formula_One_season"},{"season":"2003","url":"http:\/\/en.wikipedia.org\/wiki\/2003_Formula_One_season"},{"season":"2004","url":"http:\/\/en.wikipedia.org\/wiki\/2004_Formula_One_season"},{"season":"2005","url":"http:\/\/en.wikipedia.org\/wiki\/2005_Formula_One_season"},{"season":"2006","url":"http:\/\/en.wikipedia.org\/wiki\/2006_Formula_One_season"},{"season":"2009","url":"http:\/\/en.wikipedia.org\/wiki\/2009_Formula_One_season"},{"season":"2010","url":"http:\/\/en.wikipedia.org\/wiki\/2010_Formula_One_season"},{"season":"2011","url":"http:\/\/en.wikipedia.org\/wiki\/2011_Formula_One_season"},{"season":"2012","url":"http:\/\/en.wikipedia.org\/wiki\/2012_Formula_One_season"},{"season":"2013","url":"http:\/\/en.wikipedia.org\/wiki\/2013_Formula_One_season"},{"season":"2014","url":"http:\/\/en.wikipedia.org\/wiki\/2014_Formula_One_season"},{"season":"2015","url":"http:\/\/en.wikipedia.org\/wiki\/2015_Formula_One_season"},{"season":"2016","url":"https:\/\/en.wikipedia.org\/wiki\/2016_Formula_One_season"},{"season":"2017","url":"https:\/\/en.wikipedia.org\/wiki\/2017_Formula_One_season"}]}}}'
     http_version: 
-  recorded_at: Sat, 18 Nov 2017 13:58:12 GMT
+  recorded_at: Sun, 26 Nov 2017 05:18:27 GMT
 recorded_with: VCR 3.0.3
