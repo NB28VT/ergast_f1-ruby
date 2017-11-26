@@ -49,12 +49,20 @@ race.grid_position(6)
 race.laptime_ranking(1)
 
 ```
+
+### Note on Driver Names
+Driver results from the ErgastF1 API can be queried in most cases using the driver's last name. However, certain drivers who share a last name with another historical driver may only respond to a snakecase version of their full name. (Example, results for Michael Schumacher and Damon Hill are only available by passing "michael_schumacher" and "damon_hill" respectively).
+
+### Querying Season Lists
+<!-- TODO: ADD DEETS ON HOW TO USE SEASON LIST -->
+
+
 ### Filtering by finishing status
 ErgastF1-Ruby supports filtering race results by a scored "finishing status", i.e., if the driver finished or, if they retired, the reason why.
 ```ruby
 race.finishing_status("Engine")
 ```
-Valid ilters for finishing status:
+Valid filters for finishing status:
 
 * Finished
 * Disqualified
@@ -92,4 +100,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/Nathan
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-

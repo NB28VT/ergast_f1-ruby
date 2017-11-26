@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://ergast.com/api/f1/drivers/schumacher/seasons.json
+    uri: http://ergast.com/api/f1/drivers/michael_schumacher/seasons.json
     body:
       encoding: US-ASCII
       string: ''
@@ -13,7 +13,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 18 Nov 2017 16:19:23 GMT
+      - Sun, 26 Nov 2017 06:37:00 GMT
       Server:
       - Apache/2.2.15 (CentOS)
       X-Powered-By:
@@ -21,14 +21,14 @@ http_interactions:
       Access-Control-Allow-Origin:
       - "*"
       Content-Length:
-      - '222'
+      - '1815'
       Connection:
       - close
       Content-Type:
       - application/json; charset=utf-8
     body:
       encoding: UTF-8
-      string: '{"MRData":{"xmlns":"http:\/\/ergast.com\/mrd\/1.4","series":"f1","url":"http://ergast.com/api/f1/drivers/schumacher/seasons.json","limit":"30","offset":"0","total":"0","SeasonTable":{"driverId":"schumacher","Seasons":[]}}}'
+      string: '{"MRData":{"xmlns":"http:\/\/ergast.com\/mrd\/1.4","series":"f1","url":"http://ergast.com/api/f1/drivers/michael_schumacher/seasons.json","limit":"30","offset":"0","total":"19","SeasonTable":{"driverId":"michael_schumacher","Seasons":[{"season":"1991","url":"http:\/\/en.wikipedia.org\/wiki\/1991_Formula_One_season"},{"season":"1992","url":"http:\/\/en.wikipedia.org\/wiki\/1992_Formula_One_season"},{"season":"1993","url":"http:\/\/en.wikipedia.org\/wiki\/1993_Formula_One_season"},{"season":"1994","url":"http:\/\/en.wikipedia.org\/wiki\/1994_Formula_One_season"},{"season":"1995","url":"http:\/\/en.wikipedia.org\/wiki\/1995_Formula_One_season"},{"season":"1996","url":"http:\/\/en.wikipedia.org\/wiki\/1996_Formula_One_season"},{"season":"1997","url":"http:\/\/en.wikipedia.org\/wiki\/1997_Formula_One_season"},{"season":"1998","url":"http:\/\/en.wikipedia.org\/wiki\/1998_Formula_One_season"},{"season":"1999","url":"http:\/\/en.wikipedia.org\/wiki\/1999_Formula_One_season"},{"season":"2000","url":"http:\/\/en.wikipedia.org\/wiki\/2000_Formula_One_season"},{"season":"2001","url":"http:\/\/en.wikipedia.org\/wiki\/2001_Formula_One_season"},{"season":"2002","url":"http:\/\/en.wikipedia.org\/wiki\/2002_Formula_One_season"},{"season":"2003","url":"http:\/\/en.wikipedia.org\/wiki\/2003_Formula_One_season"},{"season":"2004","url":"http:\/\/en.wikipedia.org\/wiki\/2004_Formula_One_season"},{"season":"2005","url":"http:\/\/en.wikipedia.org\/wiki\/2005_Formula_One_season"},{"season":"2006","url":"http:\/\/en.wikipedia.org\/wiki\/2006_Formula_One_season"},{"season":"2010","url":"http:\/\/en.wikipedia.org\/wiki\/2010_Formula_One_season"},{"season":"2011","url":"http:\/\/en.wikipedia.org\/wiki\/2011_Formula_One_season"},{"season":"2012","url":"http:\/\/en.wikipedia.org\/wiki\/2012_Formula_One_season"}]}}}'
     http_version: 
-  recorded_at: Sat, 18 Nov 2017 15:28:10 GMT
+  recorded_at: Sun, 26 Nov 2017 05:45:50 GMT
 recorded_with: VCR 3.0.3

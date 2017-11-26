@@ -12,6 +12,7 @@ RSpec.describe ErgastF1::SeasonList do
         season_list = ErgastF1::SeasonList.find(circuit: "Suzuka")
         expect(valid_season_list?(season_list)).to be true
         expect(season_list["circuitId"]).to eq("suzuka")
+        expect(season_list["Seasons"].any?).to be true
       end
     end
   end
@@ -32,6 +33,7 @@ RSpec.describe ErgastF1::SeasonList do
         season_list = ErgastF1::SeasonList.find(constructor: "williams")
         expect(valid_season_list?(season_list)).to be true
         expect(season_list["constructorId"]).to eq("williams")
+        expect(season_list["Seasons"].any?).to be true
       end
     end
   end
@@ -49,9 +51,10 @@ RSpec.describe ErgastF1::SeasonList do
   context "when supplied a valid driver name" do
     it "returns all seasons a driver competed in" do
       VCR.use_cassette("season_list/schumacher_seasons") do
-        season_list = ErgastF1::SeasonList.find(driver: "schumacher")
+        season_list = ErgastF1::SeasonList.find(driver: "michael_schumacher")
         expect(valid_season_list?(season_list)).to be true
-        expect(season_list["driverId"]).to eq("schumacher")
+        expect(season_list["driverId"]).to eq("michael_schumacher")
+        expect(season_list["Seasons"].any?).to be true
       end
     end
   end
@@ -68,10 +71,11 @@ RSpec.describe ErgastF1::SeasonList do
   context "when supplied a constructor and a driver" do
     it "returns all seasons that driver drove for that constructor" do
       VCR.use_cassette("season_list/schumacher_ferrari_seasons") do
-        season_list = ErgastF1::SeasonList.find(driver: "schumacher", constructor: "ferrari")
+        season_list = ErgastF1::SeasonList.find(driver: "michael_schumacher", constructor: "ferrari")
         expect(valid_season_list?(season_list)).to be true
-        expect(season_list["driverId"]).to eq("schumacher")
+        expect(season_list["driverId"]).to eq("michael_schumacher")
         expect(season_list["constructorId"]).to eq("ferrari")
+        expect(season_list["Seasons"].any?).to be true
       end
     end
   end
@@ -94,6 +98,7 @@ RSpec.describe ErgastF1::SeasonList do
         expect(valid_season_list?(season_list)).to be true
         expect(season_list["constructorStandings"]).to eq("1")
         expect(season_list["constructorId"]).to eq("ferrari")
+        expect(season_list["Seasons"].any?).to be true
       end
     end
   end
