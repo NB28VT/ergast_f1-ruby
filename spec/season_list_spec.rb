@@ -91,7 +91,6 @@ RSpec.describe ErgastF1::SeasonList do
     it "returns all seasons that that constructor finished in that position" do
       VCR.use_cassette("season_list/ferrari_titles") do
         season_list = ErgastF1::SeasonList.find(rank: 1, constructor: "ferrari")
-
         expect(valid_season_list?(season_list)).to be true
         expect(season_list["constructorStandings"]).to eq("1")
         expect(season_list["constructorId"]).to eq("ferrari")
@@ -103,7 +102,6 @@ RSpec.describe ErgastF1::SeasonList do
     it "returns an empty arry" do
       VCR.use_cassette("season_list/minardi_titles") do
         season_list = ErgastF1::SeasonList.find(rank: 1, constructor: "mindardi")
-
         expect(season_list["constructorId"]).to eq("mindardi")
         expect(season_list["constructorStandings"]).to eq("1")
         expect(season_list["Seasons"]).to eq([])
