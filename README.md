@@ -1,6 +1,6 @@
 # ErgastF1-Ruby
 ErgastF1-Ruby is a Ruby gem wrapper for using the [ErgastF1 API](http://ergast.com/mrd/).
-It currently supports querying Formula 1 race results by season year and round number or circuit name. Additionally, it includes support for filtering a race result by driver, constructor, finishing position, grid position and finishing status/cause of retirement (ex. "Finished", "Gearbox", "Engine"). Future features will include schedules, qualifying results, standings, driver information and more.
+It currently supports querying and filtering Formula 1 race results and seasons by year, driver, constructor, circuit name and more.
 
 ## Installation
 
@@ -20,18 +20,19 @@ Or install it yourself as:
 
 ## Usage
 
+>Note: Results from the ErgastF1 API are supplied as an array. If no results are found, an empty array is returned.
+
 ### Querying Race Results
-To return all data for a specific race, initialize an instance of `ErgastF1::Race` with a season year and either a round number or a circuit name and call `.result`:
+Results data for a specific race is available by passing a season year and either the round number for that race in the Formula 1 World Championship that year, or the name of the circuit where the race was held.
 
 ```ruby
 ErgastF1::Race.new(year: 1989, round: 15).result
 ErgastF1::Race.new(year: 1989, circuit: "Suzuka").result
 
 ```
-Results from the ErgastF1 API are supplied as an array. If no results are found, an empty array is returned.
 
-### Filtering results
-Results can be filtered by a number of parameters:
+#### Filtering results
+Results for each race can be filtered by a number of parameters:
 
 ```ruby
 race = ErgastF1::Race.new(year: 2017, circuit: "Hungaroring")
@@ -50,41 +51,20 @@ race.laptime_ranking(1)
 
 ```
 
-### Note on Driver Names
+>#### Note on Driver Names
 Driver results from the ErgastF1 API can be queried in most cases using the driver's last name. However, certain drivers who share a last name with another historical driver may only respond to a snakecase version of their full name. (Example, results for Michael Schumacher and Damon Hill are only available by passing "michael_schumacher" and "damon_hill" respectively).
 
-### Querying Season Lists
-<!-- TODO: ADD DEETS ON HOW TO USE SEASON LIST -->
 
-
-### Filtering by finishing status
+#### Filtering by finishing status
 ErgastF1-Ruby supports filtering race results by a scored "finishing status", i.e., if the driver finished or, if they retired, the reason why.
 ```ruby
 race.finishing_status("Engine")
 ```
-Valid filters for finishing status:
+> Valid filters for finishing status include: ("Finished", "Disqualified", "Accident", "Collision", "Engine", "Gearbox", "Transmission", "Clutch", "Hydraulics", "Electrical", "Spun", "Radiator", "Suspension", "Brakes", "Differential", "Overheating", "Mechanical", "Tyre", "Driver Seat", "Puncture", "Driveshaft")
 
-* Finished
-* Disqualified
-* Accident
-* Collision
-* Engine
-* Gearbox
-* Transmission
-* Clutch
-* Hydraulics
-* Electrical
-* Spun
-* Radiator
-* Suspension
-* Brakes
-* Differential
-* Overheating
-* Mechanical
-* Tyre
-* Driver Seat
-* Puncture
-* Driveshaft
+### Querying Season Lists
+
+
 
 ## Development
 
