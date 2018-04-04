@@ -63,8 +63,22 @@ race.finishing_status("Engine")
 > Valid filters for finishing status include: ("Finished", "Disqualified", "Accident", "Collision", "Engine", "Gearbox", "Transmission", "Clutch", "Hydraulics", "Electrical", "Spun", "Radiator", "Suspension", "Brakes", "Differential", "Overheating", "Mechanical", "Tyre", "Driver Seat", "Puncture", "Driveshaft")
 
 ### Querying Season Lists
+Season data can be queried and filtered by circuit name, constructor, and championship result.
 
+So for example, to get all seasons where Michael Schumacher raced for Ferrari:
+```ruby
+ErgastF1::SeasonList.find(driver: "michael_schumacher", constructor: "ferrari")
+```
 
+To get all seasons the Williams team competed in:
+```ruby
+ErgastF1::SeasonList.find(constructor: "williams")
+```
+
+To get all seasons where Ferrari was the champion:
+```ruby
+  ErgastF1::SeasonList.find(rank: 1, constructor: "ferrari")
+```
 
 ## Development
 

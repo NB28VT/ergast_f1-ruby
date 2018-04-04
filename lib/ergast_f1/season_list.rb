@@ -6,8 +6,6 @@ module ErgastF1
       query_path += "constructors/#{constructor}/" if constructor
       query_path += "circuits/#{circuit}/" if circuit
 
-      # TODO: RANK AND CONSTRUCTOR AND DRIVER
-
       if rank && constructor
         query_path += "constructorStandings/#{rank}/"
       elsif rank && driver
